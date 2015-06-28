@@ -6,7 +6,7 @@ var noop = function() {};
 var defaults = {
   path: '.env',
   loadTo: process.env,
-  override: true
+  override: false
 };
 
 module.exports.load = load;

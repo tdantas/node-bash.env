@@ -32,15 +32,15 @@ describe('.env', function() {
     assert.equal(loadTo.CUSTOM, 'custom value');
   });
 
-  it('override environment variable [ default behavior ]', function() {
+  it('override environment variable', function() {
     loadTo.OVERRIDE = 1;
-    env.load({ loadTo: loadTo, path: file('.override.env') });
+    env.load({ loadTo: loadTo, path: file('.override.env') , override: true});
     assert.equal(loadTo.OVERRIDE, '2');
   });
 
-  it('do not override environment variable', function() {
+  it('do not override environment variable [default behavior]', function() {
     loadTo.OVERRIDE = 1;
-    env.load({ loadTo: loadTo, override: false, path: file('.no.override.env') });
+    env.load({ loadTo: loadTo, path: file('.no.override.env') });
     assert.equal(loadTo.OVERRIDE, 1);
   });
 
