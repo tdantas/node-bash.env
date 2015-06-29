@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/tdantas/node-bash.env.svg)](https://travis-ci.org/tdantas/node-bash.env) [![Code Climate](https://codeclimate.com/github/tdantas/node-bash.env/badges/gpa.svg)](https://codeclimate.com/github/tdantas/node-bash.env)[![Coverage Status](https://coveralls.io/repos/tdantas/node-bash.env/badge.svg)](https://coveralls.io/r/tdantas/node-bash.env)
+[![Build Status](https://travis-ci.org/tdantas/node-bash.env.svg)](https://travis-ci.org/tdantas/node-bash.env) [![Code Climate](https://codeclimate.com/github/tdantas/node-bash.env/badges/gpa.svg)](https://codeclimate.com/github/tdantas/node-bash.env)
+
 
 Suppose your upstart script is something like that
 
