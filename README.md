@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/tdantas/node-bash.env.svg)](https://travis-ci.org/tdantas/node-bash.env)
 
+[![Code Climate](https://codeclimate.com/github/tdantas/node-bash.env/badges/gpa.svg)](https://codeclimate.com/github/tdantas/node-bash.env)
+
 Suppose your upstart script is something like that
 
 ```
