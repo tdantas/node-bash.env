@@ -29,16 +29,23 @@ function load(opts) {
 
   function assign(obj, override, name, value) {
     value = value || '';
+    value = clean(value);
+    name  = clean(name);
 
     var exists = obj[name];
     if (exists && !override) {
       return;
     }
 
-    obj[name] = cleanQuotes(value);
+    var isVariable = value.match(/\$(.*)\s*$/i);
+    if (isVariable) {
+      value = obj[isVariable[1]] || '';
+    }
+
+    obj[name] = value;
   }
 
-  function cleanQuotes(value) {
+  function clean(value) {
     return value.replace(/(^['"]|['"]$)/g, '').trim();
   }
 

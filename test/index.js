@@ -74,4 +74,11 @@ describe('.env', function() {
     assert.isUndefined(loadTo.IGNORE);
     assert.equal(loadTo.COMMENT, 'true');
   });
+
+  it('reuse defined variable', function(){
+    env.load({ path: file('.reuse.variable.env'), loadTo: loadTo });
+    assert.equal(loadTo.AGE, 10);
+    assert.equal(loadTo.MY_AGE, 10);
+    assert.equal(loadTo.OUR_AGE, 10);
+  });
 });
