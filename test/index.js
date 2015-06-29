@@ -29,7 +29,7 @@ describe('.env', function() {
 
   it('loads .custom.env file', function() {
     env.load({ path: file('.custom.env'), loadTo: loadTo });
-    assert.equal(loadTo.CUSTOM, 'custom value');
+    assert.equal(loadTo['CUSTOM-VAR'], 'custom value');
   });
 
   it('override environment variable', function() {
