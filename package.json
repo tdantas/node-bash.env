@@ -4,7 +4,7 @@
   "description": "Node.JS environment configuration",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/*.js"
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha  -- -R spec"
   },
   "author": "tdantas",
   "license": "ISC",
@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "chai": "^3.0.0",
+    "istanbul": "^0.3.17",
     "mocha": "^2.2.5"
   }
 }
