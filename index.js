@@ -31,8 +31,9 @@ function load(opts) {
     value = value || '';
 
     var exists = obj[name];
-    if (exists && !override)
+    if (exists && !override) {
       return;
+    }
 
     obj[name] = cleanQuotes(value);
   }
