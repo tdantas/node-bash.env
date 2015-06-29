@@ -20,7 +20,7 @@ function load(opts) {
   lines(file).forEach(onLine);
 
   function onLine(line) {
-    var pattern = /^\s*(?:export)?\s*([^=]*)(?:=(.*))?$/i;
+    var pattern = /^\s*(?:export)?\s*([^=]*)(?:\s*=\s*(.*))?\s*$/i;
     var match = line.match(pattern);
     if (match) {
       assign(opts.loadTo, opts.override, match[1], match[2]);
