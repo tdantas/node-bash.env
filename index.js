@@ -28,9 +28,7 @@ function load(opts) {
   }
 
   function assign(obj, override, name, value) {
-    value = value || '';
-    value = clean(value);
-    name  = clean(name);
+    value = removeQuote(trim(value));
 
     var exists = obj[name];
     if (exists && !override) {
@@ -42,10 +40,14 @@ function load(opts) {
       value = obj[isVariable[1]] || '';
     }
 
-    obj[name] = value;
+    obj[trim(name)] = trim(value);
   }
 
-  function clean(value) {
+  function trim(value) {
+    return (value || '').trim();
+  }
+
+  function removeQuote(value) {
     return value.replace(/(^['"]|['"]$)/g, '').trim();
   }
 
