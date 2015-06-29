@@ -4,7 +4,8 @@ var xtend = require('xtend');
 var defaults = {
   path: '.env',
   loadTo: process.env,
-  override: false
+  override: false,
+  encoding: 'utf8'
 };
 
 module.exports.load = load;
@@ -15,43 +16,41 @@ function load(opts) {
   }
 
   opts = xtend(defaults, opts);
-
-  var file = fs.readFileSync(opts.path, { encoding: 'utf8' });
+  var file = fs.readFileSync(opts.path, { encoding: opts.encoding });
   lines(file).forEach(onLine);
 
   function onLine(line) {
     var pattern = /^\s*(?:export)?\s*([^=]*)(?:\s*=\s*(.*))?\s*$/i;
     var match = line.match(pattern);
-    if (match) {
+    if (match)
       assign(opts.loadTo, opts.override, match[1], match[2]);
-    }
+  }
+}
+
+function assign(obj, override, name, value) {
+  value = removeQuote(trim(value));
+
+  var exists = obj[name];
+  if (exists && !override) {
+    return;
   }
 
-  function assign(obj, override, name, value) {
-    value = removeQuote(trim(value));
-
-    var exists = obj[name];
-    if (exists && !override) {
-      return;
-    }
-
-    var isVariable = value.match(/\$(.*)\s*$/i);
-    if (isVariable) {
-      value = obj[isVariable[1]] || '';
-    }
-
-    obj[trim(name)] = trim(value);
+  var isVariable = value.match(/\$(.*)\s*$/i);
+  if (isVariable) {
+    value = obj[isVariable[1]] || '';
   }
 
-  function trim(value) {
-    return (value || '').trim();
-  }
+  obj[trim(name)] = trim(value);
+}
 
-  function removeQuote(value) {
-    return value.replace(/(^['"]|['"]$)/g, '').trim();
-  }
+function trim(value) {
+  return (value || '').trim();
+}
 
-  function lines(content) {
-    return content.split('\n');
-  }
+function removeQuote(value) {
+  return value.replace(/(^['"]|['"]$)/g, '').trim();
+}
+
+function lines(content) {
+  return content.split('\n');
 }
