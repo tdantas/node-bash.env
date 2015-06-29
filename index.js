@@ -44,5 +44,4 @@ function load(opts) {
   function lines(content) {
     return content.split('\n');
   }
-
 }
