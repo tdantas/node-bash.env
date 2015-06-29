@@ -1,8 +1,6 @@
 var fs = require('fs');
 var xtend = require('xtend');
 
-var noop = function() {};
-
 var defaults = {
   path: '.env',
   loadTo: process.env,
