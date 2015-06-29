@@ -1,5 +1,5 @@
 {
-  "name": "bash.env",
+  "name": "config.env",
   "version": "1.0.0",
   "description": "Node.JS environment configuration",
   "main": "index.js",
