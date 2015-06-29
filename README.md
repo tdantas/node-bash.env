@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/tdantas/node-bash.env.svg)](https://travis-ci.org/tdantas/node-bash.env)
 
 Suppose your upstart script is something like that
 
