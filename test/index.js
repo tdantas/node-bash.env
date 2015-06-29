@@ -69,4 +69,9 @@ describe('.env', function() {
     assert.isDefined(process.env.VERBOSE);
   });
 
+  it('ignores comment', function(){
+    env.load({ path: file('.comments.env'), loadTo: loadTo });
+    assert.isUndefined(loadTo.IGNORE);
+    assert.equal(loadTo.COMMENT, 'true');
+  });
 });
