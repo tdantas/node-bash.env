@@ -81,4 +81,14 @@ describe('.env', function() {
     assert.equal(loadTo.MY_AGE, 10);
     assert.equal(loadTo.OUR_AGE, 10);
   });
+
+  it('logs to function', function(){
+    var output = [];
+    function log(msg) {
+      output.push(msg);
+    }
+
+    env.load({ path: file('.env'), loadTo: loadTo, log: log });
+    assert.equal(output.length, 3);
+  });
 });
